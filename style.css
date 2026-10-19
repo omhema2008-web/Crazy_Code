@@ -1,0 +1,61 @@
+:root{
+  --bg:#f4f7f6;--panel:#ffffff;--ink:#16211f;--muted:#6b7a77;--line:#dbe4e1;
+  --editor:#fbfdfc;--out:#f0f5f3;--accent:#5b5bd6;--on-accent:#fff;--err:#c62828;--ok:#1b8a4b;
+}
+[data-theme="dark"]{--bg:#0b0f10;--panel:#14191b;--ink:#e8efed;--muted:#8a9a96;--line:#263033;--editor:#0f1415;--out:#0d1112;--err:#ff6b6b;--ok:#4cd98a}
+[data-theme="sepia"]{--bg:#efe6d2;--panel:#f8f0de;--ink:#3b2f1e;--muted:#80704f;--line:#d9ccaf;--editor:#fbf5e6;--out:#f1e8d3}
+[data-theme="ocean"]{--bg:#0a1f33;--panel:#0f2b45;--ink:#e3f1ff;--muted:#86a8c4;--line:#1d4163;--editor:#0c2640;--out:#091c2f;--err:#ff8a80;--ok:#6ee7a8}
+
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{font-family:'Space Grotesk',system-ui,sans-serif;background:var(--bg);color:var(--ink);transition:background .25s,color .25s}
+.hidden{display:none!important}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.nest{color:var(--accent)}
+
+/* Welcome */
+.welcome{min-height:100%;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:48px;padding:6vw}
+.intro h1{font-size:clamp(3rem,8vw,6rem);letter-spacing:-.04em;line-height:1}
+.intro p{margin-top:16px;max-width:30ch;font-size:1.25rem;color:var(--muted)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:32px;display:grid;gap:16px;max-width:440px;width:100%;justify-self:center}
+.card h2{font-size:1.4rem}
+label{display:grid;gap:6px;font-size:.9rem;color:var(--muted)}
+input,select,textarea,button{font:inherit;color:var(--ink)}
+.card input,.card select{padding:11px 12px;border:1px solid var(--line);border-radius:8px;background:var(--editor)}
+.card input:focus,.card select:focus{border-color:var(--accent)}
+
+/* Buttons and controls */
+.btn{padding:9px 16px;border:1px solid var(--line);border-radius:8px;background:var(--panel);cursor:pointer;transition:transform .1s,opacity .2s}
+.btn:hover{opacity:.85}.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:500}
+.btn:disabled{opacity:.5;cursor:wait}
+header select{padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+.swatch input{width:38px;height:36px;padding:2px;border:1px solid var(--line);border-radius:8px;background:var(--panel);cursor:pointer}
+
+/* App */
+.app{height:100%;display:flex;flex-direction:column}
+header{display:flex;align-items:center;gap:16px;padding:12px 20px;background:var(--panel);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.logo{font-weight:700;font-size:1.4rem;letter-spacing:-.03em}
+.hello{color:var(--muted);flex:1}
+.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+main{flex:1;display:grid;grid-template-columns:1.4fr 1fr;gap:12px;padding:12px;min-height:0}
+.pane{background:var(--panel);border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.bar{display:flex;justify-content:space-between;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.bar b{color:var(--ink)}
+.editor{flex:1;display:flex;min-height:0;background:var(--editor)}
+#lines,#code,#stdin,#output{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:14px;line-height:1.6}
+#lines{padding:14px 10px;text-align:right;color:var(--muted);border-right:1px solid var(--line);user-select:none;overflow:hidden;min-width:44px}
+#code{flex:1;padding:14px;border:0;resize:none;background:transparent;tab-size:4;white-space:pre;overflow:auto;outline:0}
+.right{display:flex;flex-direction:column}
+#stdin{height:20%;min-height:70px;padding:12px 14px;border:0;resize:none;background:var(--editor);outline:0}
+#output{flex:1;padding:12px 14px;background:var(--out);overflow:auto;white-space:pre-wrap;word-break:break-word}
+#output.error{color:var(--err)}
+#status.ok{color:var(--ok)}#status.bad{color:var(--err)}
+
+@media(max-width:800px){
+  .welcome{grid-template-columns:1fr;gap:24px}
+  main{grid-template-columns:1fr;grid-template-rows:55% 45%;overflow:auto}
+  .hello{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}

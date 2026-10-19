@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CodeNest – Write, run and debug code online</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section id="welcome" class="welcome">
+  <div class="intro">
+    <h1>Code<span class="nest">Nest</span></h1>
+    <p>Write, run and debug Java, Python, C and C++ right in your browser.</p>
+  </div>
+  <form id="detailsForm" class="card">
+    <h2>Create your profile</h2>
+    <label>Full name<input id="name" required placeholder="e.g. Hema Varshini"></label>
+    <label>Email<input id="email" type="email" required placeholder="you@example.com"></label>
+    <label>College or company<input id="college" placeholder="Optional"></label>
+    <label>Favourite language
+      <select id="fav">
+        <option value="python">Python</option><option value="java">Java</option>
+        <option value="c">C</option><option value="cpp">C++</option>
+      </select>
+    </label>
+    <button class="btn primary" type="submit">Start coding</button>
+  </form>
+</section>
+
+<div id="app" class="app hidden">
+  <header>
+    <div class="logo">Code<span class="nest">Nest</span></div>
+    <span id="hello" class="hello"></span>
+    <div class="tools">
+      <select id="lang" aria-label="Language">
+        <option value="python">Python</option><option value="java">Java</option>
+        <option value="c">C</option><option value="cpp">C++</option>
+      </select>
+      <label class="swatch" title="Accent colour"><input type="color" id="accent" value="#5b5bd6"></label>
+      <select id="bg" aria-label="Background">
+        <option value="light">White</option><option value="dark">Black</option>
+        <option value="sepia">Paper</option><option value="ocean">Ocean</option>
+      </select>
+      <button id="theme" class="btn" title="Switch white / black">Dark mode</button>
+      <button id="run" class="btn primary">Run code</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="pane">
+      <div class="bar"><b>Editor</b><span id="file">main.py</span></div>
+      <div class="editor"><pre id="lines" aria-hidden="true">1</pre><textarea id="code" spellcheck="false" aria-label="Code editor"></textarea></div>
+    </section>
+    <section class="pane right">
+      <div class="bar"><b>Input</b><span>One value per line, as your program reads them</span></div>
+      <textarea id="stdin" spellcheck="false" placeholder="Type program input here"></textarea>
+      <div class="bar"><b>Output</b><span id="status">Ready</span></div>
+      <pre id="output">Press Run code to see the result.</pre>
+    </section>
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
